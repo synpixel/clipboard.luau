@@ -24,7 +24,7 @@ end
 
 local function read(): Result.Result<string, process.SpawnResult>
 	if process.os == "linux" then
-		return execute("xclip", { "-selection", " clipboard", " -o" }):map(stdout)
+		return execute("xclip", { "-selection", "clipboard", " -o" }):map(stdout)
 	elseif process.os == "macos" then
 		return execute("pbpaste"):map(stdout)
 	elseif process.os == "windows" then
@@ -36,12 +36,11 @@ end
 
 local function write(text: string): Result.Result<nil, process.SpawnResult>
 	if process.os == "linux" then
-		return execute("xclip", { "-selection", "clipboard", text }):map(nothing)
+		return execute("xclip", { "-selection", "clipboard" }, { stdin = text }):map(nothing)
 	elseif process.os == "macos" then
-		return execute("pbcopy", { text }):map(nothing)
+		return execute("pbcopy", nil, { stdin = text }):map(nothing)
 	elseif process.os == "windows" then
-		local escapedText = text:gsub("`", "``"):gsub('"', '`"')
-		return execute("Set-Clipboard", { `"{escapedText}"` }, { shell = true }):map(nothing)
+		return execute("Set-Clipboard", nil, { shell = true, stdin = text }):map(nothing)
 	end
 
 	error("unreachable")
