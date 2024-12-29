@@ -1,0 +1,16 @@
+name = "synpixel/clipboard"
+version = "0.1.0"
+description = "Read/write operations for the clipboard in Luau"
+authors = ["synpixel"]
+repository = "https://github.com/synpixel/clipboard.luau"
+license = "MIT"
+
+[target]
+environment = "lune"
+lib = "lib.luau"
+
+[indices]
+default = "https://github.com/daimond113/pesde-index"
+
+[dependencies]
+result = { name = "lukadev_0/result", version = "^1.2.0" }
