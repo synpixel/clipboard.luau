@@ -24,7 +24,7 @@ end
 
 local function read(): Result.Result<string, process.SpawnResult>
 	if process.os == "linux" then
-		return execute("xclip", { "-selection", "clipboard", " -o" }):map(stdout)
+		return execute("xclip", { "-selection", "clipboard", "-o" }):map(stdout)
 	elseif process.os == "macos" then
 		return execute("pbpaste"):map(stdout)
 	elseif process.os == "windows" then
