@@ -40,7 +40,8 @@ local function write(text: string): Result.Result<nil, process.SpawnResult>
 	elseif process.os == "macos" then
 		return execute("pbcopy", nil, { stdin = text }):map(nothing)
 	elseif process.os == "windows" then
-		return execute("Set-Clipboard", nil, { shell = true, stdin = text }):map(nothing)
+		local escapedText = text:gsub("`", "``"):gsub('"', '`"')
+		return execute("Set-Clipboard", { `"{escapedText}"` }, { shell = true }):map(nothing)
 	end
 
 	error("unreachable")
