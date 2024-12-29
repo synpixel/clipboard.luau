@@ -18,7 +18,7 @@ local function stdout(result: process.SpawnResult): string
 	return result.stdout:gsub("\r\n$", "")
 end
 
-local function nothing(x): nil
+local function nothing(): nil
 	return nil
 end
 
