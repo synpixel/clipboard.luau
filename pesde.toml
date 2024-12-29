@@ -1,5 +1,5 @@
 name = "synpixel/clipboard"
-version = "0.1.1"
+version = "0.1.2"
 description = "Read/write operations for the clipboard in Luau"
 authors = ["synpixel"]
 repository = "https://github.com/synpixel/clipboard.luau"
