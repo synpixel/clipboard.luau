@@ -4,6 +4,7 @@ description = "Read/write operations for the clipboard in Luau"
 authors = ["synpixel"]
 repository = "https://github.com/synpixel/clipboard.luau"
 license = "MIT"
+includes = ["pesde.toml", "README.md", "LICENSE", "lib.luau"]
 
 [target]
 environment = "lune"
